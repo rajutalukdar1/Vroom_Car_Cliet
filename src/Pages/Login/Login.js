@@ -1,10 +1,14 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import './Login.css'
 
 const Login = () => {
-    // onClick={handleGoogleSignIn}
-    // onSubmit={handelSubmit}
+    const { register, formState: { errors }, handleSubmit } = useForm();
+
+    const handelLogin = data => {
+        console.log(data);
+    }
     return (
         <div>
             <div className="hero min-h-screen text-black">
@@ -13,27 +17,33 @@ const Login = () => {
                         <h1 className="text-5xl font-bold">Login now!!</h1>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl text-black">
-                        <form className="card-body">
+                        <form className="card-body" onSubmit={handleSubmit(handelLogin)}>
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-black">Email</span>
                                 </label>
-                                <input type="email" name='email' placeholder="email" className="input input-bordered" required />
+                                <input type="email" {...register("email", {
+                                    required: "Email Address is required"
+                                })}
+                                    placeholder="Email" className="input input-bordered " />
+                                {errors.email && <p role="alert" className='text-red-500'>{errors.email?.message}</p>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-black">Password</span>
                                 </label>
-                                <input type="password" name='password' placeholder="password" className="input input-bordered " required />
-                                <label className="label">
-                                    <Link to="" className="label-text-alt link link-hover text-black">Forgot password?</Link>
-                                </label>
+                                <input type="password" {...register("password", {
+                                    required: "Password Address is required",
+                                    minLength: { value: 6, message: 'password must be 6 cheaters' }
+                                })} placeholder="Password" className="input input-bordered " />
+                                {errors.password && <p role="alert" className='text-red-500'>{errors.password?.message}</p>}
                             </div>
-                            <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login</button>
-                            </div>
+                            <label className="label">
+                                <Link to="" className="label-text-alt link text-black">Forgot password?</Link>
+                            </label>
+                            <input className="btn btn-primary" value='Login' type="submit" />
                             <small><p>Don't have a accounts?<Link className='text-purple-600 font-bold' to='/signup'>Register now</Link></p></small>
-                            {/* <p className='text-red-600'>{error}</p> */}
                         </form>
                     </div>
                     <p className='text-center'>-------------Or-------------</p>

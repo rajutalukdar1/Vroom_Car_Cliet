@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <div>
-            <footer className="footer footer-center p-2 bg-gray-600 text-primary-content rounded-lg">
+            <footer className="footer footer-center p-2 bg-gray-900 text-primary-content rounded-lg">
                 <div>
-                    <img className='w-1/5' src='https://i.ibb.co/3F4L1Vt/5-52341-wise-owl-mathematics-removebg-preview.png' alt="" />
+                    <img className='m-7' src='https://vroom.com.bd/wp-content/uploads/2022/09/v.logo_.247.white_.may20-165x31.png' alt="" />
                     <Link className=' font-semibold text-2xl' to='/'><span className='text-cyan-400'>Edu</span><span className='text-red-400'>Sphere</span></Link>
                     <p className="font-bold text-lime-300">
-                        ACME Industries Ltd. <br />Providing reliable tech since 1992
+                        Level 7, Plot 25, Road 27, Block G <br />
+                        Jomuna Future Park, Bosundora, Dhaka-1212, Bangladesh.
                     </p>
                     <p className='text-green-300'>Copyright © 2022 - All right reserved</p>
                 </div>
