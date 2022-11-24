@@ -71,7 +71,7 @@ const SignUp = () => {
                                 })} placeholder="Password" className="input input-bordered " />
                                 {errors.password && <p role="alert" className='text-red-500'>{errors.password?.message}</p>}
                             </div>
-                            <input className="btn btn-primary" value='Login' type="submit" />
+                            <input className="btn btn-warning" value='Login' type="submit" />
                             {
                                 signUpError && <p className='text-red-600'>{signUpError}</p>
                             }
@@ -82,7 +82,7 @@ const SignUp = () => {
                     <div>
                         <Link >
                             <div className='flex justify-content-center align-items-center mt-3 '>
-                                <div className='flex justify-between items-center login-container hover:bg-primary'>
+                                <div className='flex justify-between items-center login-container hover:bg-warning'>
                                     <div className='w-10 h-10 ml-1'>
                                         <img
                                             src='https://i.ibb.co/7yz77Hj/google.png' alt=''

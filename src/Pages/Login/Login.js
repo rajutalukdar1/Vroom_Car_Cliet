@@ -7,7 +7,7 @@ import './Login.css'
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { login } = useContext(AuthContext);
+    const { login, signInWithGoogle } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('')
 
     const handelLogin = data => {
@@ -25,6 +25,23 @@ const Login = () => {
 
             })
     }
+
+    const handleSignInWithGoogle = () => {
+        signInWithGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                if (user.uid) {
+                    toast.success('Login successfully', {
+                        position: "top-center"
+                    });
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
+
     return (
         <div>
             <div className="hero min-h-screen text-black">
@@ -58,7 +75,7 @@ const Login = () => {
                             <label className="label">
                                 <Link to="" className="label-text-alt link text-black">Forgot password?</Link>
                             </label>
-                            <input className="btn btn-primary" value='Login' type="submit" />
+                            <input className="btn btn-warning" value='Login' type="submit" />
                             {
                                 loginError && <p className='text-red-500'>{loginError}</p>
                             }
@@ -67,9 +84,9 @@ const Login = () => {
                     </div>
                     <p className='text-center'>-------------Or-------------</p>
                     <div>
-                        <Link >
+                        <Link onClick={handleSignInWithGoogle}>
                             <div className='flex justify-content-center align-items-center mt-3 '>
-                                <div className='flex justify-between items-center login-container hover:bg-primary'>
+                                <div className='flex justify-between items-center login-container hover:bg-warning'>
                                     <div className='w-10 h-10 ml-1'>
                                         <img
                                             src='https://i.ibb.co/7yz77Hj/google.png' alt=''

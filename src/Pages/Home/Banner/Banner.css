@@ -2,7 +2,7 @@
     width: 100%;
     height: 72vh;
     /* height: 500px; */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), url("https://i.ibb.co/LrFYjCC/bnr3.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 10), rgba(0, 0, 0, 0.2)), url("https://i.ibb.co/LrFYjCC/bnr3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 5px;

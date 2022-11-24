@@ -19,6 +19,7 @@ const Navbar = () => {
         {user?.uid ?
             <>
                 <li><Link to='/login'>My Products</Link></li>
+                <li><Link to='/login'>Dashboard</Link></li>
                 <li><Link onClick={handleLogOut}>Log Out</Link></li>
             </>
             : <li><Link to='/login'>Login</Link></li>
@@ -38,7 +39,7 @@ const Navbar = () => {
                     </div>
                     <Link><img className='sm:w-1/3' src="https://vroom.com.bd/wp-content/uploads/2022/10/v.logo_.247.color_.may20.png" alt="" /></Link>
                 </div>
-                <div className="navbar-center hidden lg:flex">
+                <div className="navbar-end font-semibold hidden lg:flex">
                     <ul className="menu menu-horizontal p-0 text-black">
                         {menuItems}
                     </ul>
