@@ -7,7 +7,7 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, signInWithGoogle } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
 
     const handelSignUp = data => {
@@ -29,6 +29,23 @@ const SignUp = () => {
             .catch(error => {
                 console.error(error);
                 setSignUpError(error.message)
+
+            })
+    }
+
+    const handleSignInWithGoogle = () => {
+        signInWithGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                if (user.uid) {
+                    toast.success('Login successfully', {
+                        position: "top-center"
+                    });
+                }
+            })
+            .catch(error => {
+                console.error(error);
             })
     }
     return (
@@ -80,7 +97,7 @@ const SignUp = () => {
                     </div>
                     <p className='text-center'>-------------Or-------------</p>
                     <div>
-                        <Link >
+                        <Link onClick={handleSignInWithGoogle}>
                             <div className='flex justify-content-center align-items-center mt-3 '>
                                 <div className='flex justify-between items-center login-container hover:bg-warning'>
                                     <div className='w-10 h-10 ml-1'>

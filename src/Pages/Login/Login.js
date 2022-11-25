@@ -8,7 +8,7 @@ import './Login.css'
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { login, signInWithGoogle } = useContext(AuthContext);
-    const [loginError, setLoginError] = useState('')
+    const [loginError, setLoginError] = useState('');
 
     const handelLogin = data => {
         console.log(data);
@@ -79,7 +79,7 @@ const Login = () => {
                             {
                                 loginError && <p className='text-red-500'>{loginError}</p>
                             }
-                            <small><p>Don't have a accounts?<Link className='text-purple-600 font-bold' to='/signup'>Register now</Link></p></small>
+                            <small><p>Don't have an accounts?<Link className='text-purple-600 font-bold' to='/signup'>Register now</Link></p></small>
                         </form>
                     </div>
                     <p className='text-center'>-------------Or-------------</p>
