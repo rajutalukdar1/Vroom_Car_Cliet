@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Category = ({ category }) => {
     // console.log(category.car_id);
-    const { image, brandName, sellerName, location } = category;
+    const { image, brandName, sellerName, location, car_id } = category;
 
 
     const handleAllCars = () => {
@@ -12,7 +12,7 @@ const Category = ({ category }) => {
 
     return (
         <div>
-            <Link to={`/products/${category.car_id}`} onClick={handleAllCars}>
+            <Link to={`/products/${car_id}`} onClick={handleAllCars}>
                 <div className="card bg-base-100 shadow-2xl">
                     <figure className="px-5 pt-8">
                         <img src={image} alt="Shoes" className="rounded-sm w-full h-48" />

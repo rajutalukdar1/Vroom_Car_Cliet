@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Category from './Category';
 // import Audi from './Audi/Audi';
 // import Bmw from './BmwCar/Bmw';
@@ -28,10 +29,9 @@ const Categories = () => {
 
             </div>
             <div className="flex justify-center p-5">
-                <button className="btn btn-warning text-white hover:bg-orange-600">View All Cars</button>
+                <Link to='/productAll'><button className="btn btn-warning  text-white hover:bg-orange-600">View All Cars</button></Link>
             </div>
         </div>
-
     );
 };
 

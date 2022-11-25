@@ -20,7 +20,7 @@ const BrandLogo = () => {
                 <div className="window border mb-4 rounded-lg shadow-2xl">
                     <div className="flex justify-center p-8 text-black mb-4 font-black text-3xl"><h2>Find Your Car Brand</h2></div>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-20 px-32 lg:ml-20 mt-3'>
-                        <Link><img src={img1} alt="" /></Link>
+                        <Link to='/products'><img src={img1} alt="" /></Link>
                         <Link><img src={img2} alt="" /></Link>
                         <Link><img src={img3} alt="" /></Link>
                         <Link><img src={img4} alt="" /></Link>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Product = ({ product }) => {
-    const { name, image, sellerName, location, resale_Price, original_Price } = product;
+const AllCar = ({ allCar }) => {
+    const { name, image, sellerName, location, resale_Price, original_Price } = allCar;
     return (
         <div>
             <Link>
@@ -29,4 +29,4 @@ const Product = ({ product }) => {
     );
 };
 
-export default Product;
+export default AllCar;
