@@ -18,8 +18,8 @@ const Category = ({ category }) => {
                         <img src={image} alt="Shoes" className="rounded-sm w-full h-48" />
                     </figure>
                     <div className="card-body text-center">
-                        <h2 className="card-title">{brandName} ...</h2>
-                        <p>{sellerName}</p>
+                        <h2 className="text-center text-2xl font-bold">{brandName}</h2>
+                        <p className='font-semibold text-cyan-400'>{sellerName}</p>
                         <p>{location}</p>
                         <div className="card-actions">
                             <button className="btn btn-warning w-full text-white hover:bg-orange-600">View Cars</button>

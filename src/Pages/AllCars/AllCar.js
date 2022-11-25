@@ -11,8 +11,8 @@ const AllCar = ({ allCar }) => {
                         <img src={image} alt="Shoes" className="rounded-sm w-full " style={{ height: '200px' }} />
                     </figure>
                     <div className="card-body text-center">
-                        <h2 className="card-title">{name}</h2>
-                        <p>{sellerName}</p>
+                        <h2 className="text-center text-xl font-bold">{name}</h2>
+                        <p className='font-semibold text-cyan-400'>{sellerName}</p>
                         <p>{location}</p>
                         <div className='flex justify-between'>
                             <h1 className='text-red-500 font-semibold'>|New Price:{original_Price}|</h1>
