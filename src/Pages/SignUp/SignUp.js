@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const SignUp = () => {
@@ -9,19 +9,24 @@ const SignUp = () => {
 
     const { createUser, updateUser, signInWithGoogle } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handelSignUp = data => {
-        console.log(data);
+        // console.log(data);
         setSignUpError('')
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 toast.success('User SignUp Successfully')
+                navigate(from, { replace: true });
                 const userInfo = {
                     displayName: data.name
                 }
-                console.log(userInfo);
+                // console.log(userInfo);
                 updateUser(userInfo)
                     .then(() => { })
                     .catch(err => console.log(err))
@@ -80,6 +85,20 @@ const SignUp = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
+                                    <span className="label-text text-black">Select</span>
+                                </label>
+                                <select type="select" {...register("select", {
+                                    required: "selection is required"
+                                })}
+                                    placeholder="select" className="select select-warning w-full max-w-xs" >
+                                    <option selected>Buyer</option>
+                                    <option>Seller</option>
+                                </select>
+                                {errors.select && <p role="alert" className='text-red-500'>{errors.select?.message}</p>}
+                            </div>
+
+                            <div className="form-control">
+                                <label className="label">
                                     <span className="label-text text-black">Password</span>
                                 </label>
                                 <input type="password" {...register("password", {
@@ -88,7 +107,7 @@ const SignUp = () => {
                                 })} placeholder="Password" className="input input-bordered " />
                                 {errors.password && <p role="alert" className='text-red-500'>{errors.password?.message}</p>}
                             </div>
-                            <input className="btn btn-warning" value='Login' type="submit" />
+                            <input className="btn btn-warning" value='Register' type="submit" />
                             {
                                 signUpError && <p className='text-red-600'>{signUpError}</p>
                             }
