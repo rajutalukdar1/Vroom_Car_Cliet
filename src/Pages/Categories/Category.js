@@ -6,13 +6,15 @@ const Category = ({ category }) => {
     const { image, brandName, sellerName, location, car_id } = category;
 
 
-    const handleAllCars = () => {
-        console.log('view all cars');
-    }
+    // const handleAllCars = () => {
+    //     console.log('view all cars');
+    //     onClick={handleAllCars}
+    // }
+
 
     return (
         <div>
-            <Link to={`/products/${car_id}`} onClick={handleAllCars}>
+            <Link to={`/products/${car_id}`}>
                 <div className="card bg-base-100 shadow-2xl">
                     <figure className="px-5 pt-8">
                         <img src={image} alt="Shoes" className="rounded-sm w-full h-48" />

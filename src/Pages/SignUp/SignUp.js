@@ -22,13 +22,15 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user);
                 toast.success('User SignUp Successfully')
-                navigate('/');
+
                 const userInfo = {
                     displayName: data.name
                 }
                 // console.log(userInfo);
                 updateUser(userInfo)
-                    .then(() => { })
+                    .then(() => {
+                        saveUser(data.name, data.email);
+                    })
                     .catch(err => console.log(err))
             })
             .catch(error => {
@@ -53,6 +55,24 @@ const SignUp = () => {
                 console.error(error);
             })
     }
+
+
+    const saveUser = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                navigate('/');
+            })
+    }
+
     return (
         <div>
             <div className="hero min-h-screen text-black">
@@ -87,14 +107,14 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text text-black">Select</span>
                                 </label>
-                                <select type="select" {...register("select", {
+                                <select type="role" {...register("role", {
                                     required: "selection is required"
                                 })}
-                                    placeholder="select" className="select select-warning w-full max-w-xs" >
+                                    placeholder="role" className="select select-warning w-full max-w-xs" >
                                     <option selected>Buyer</option>
                                     <option>Seller</option>
                                 </select>
-                                {errors.select && <p role="alert" className='text-red-500'>{errors.select?.message}</p>}
+                                {errors.role && <p role="alert" className='text-red-500'>{errors.role?.message}</p>}
                             </div>
 
                             <div className="form-control">

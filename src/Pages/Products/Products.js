@@ -24,6 +24,7 @@ const Products = () => {
                 allProduct &&
                 <BookModal
                     allProduct={allProduct}
+                    setAllProduct={setAllProduct}
                 ></BookModal>
             }
         </div>
