@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const SignUp = () => {
@@ -9,10 +9,10 @@ const SignUp = () => {
 
     const { createUser, updateUser, signInWithGoogle } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
-    const location = useLocation();
+    // const location = useLocation();
     const navigate = useNavigate();
 
-    const from = location.state?.from?.pathname || '/';
+    // const from = location.state?.from?.pathname || '/';
 
     const handelSignUp = data => {
         // console.log(data);
@@ -22,7 +22,7 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user);
                 toast.success('User SignUp Successfully')
-                navigate(from, { replace: true });
+                navigate('/');
                 const userInfo = {
                     displayName: data.name
                 }

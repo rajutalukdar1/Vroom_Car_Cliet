@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Product = ({ product }) => {
+const Product = ({ product, setAllProduct }) => {
     const { name, image, sellerName, location, resale_Price, original_Price } = product;
     return (
         <div>
@@ -17,7 +17,7 @@ const Product = ({ product }) => {
                         <h1 className=' font-bold'>|Now Price:{resale_Price}|</h1>
                     </div>
                     <div className="card-actions flex justify-between">
-                        <label htmlFor="my-modal-3" className=" btn btn-warning text-white hover:bg-yellow-600">Book Mark</label>
+                        <label onClick={() => setAllProduct(product)} htmlFor="my-modal-3" className=" btn btn-warning text-white hover:bg-yellow-600">Book Mark</label>
                         <button className="btn btn-warning text-white hover:bg-orange-600">Wish List </button>
                         {/* <button className="">Book Mark</button> */}
                     </div>

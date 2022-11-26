@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import BookModal from '../BookModal/BookModal';
 import Product from './Product';
 
 const Products = () => {
     const products = useLoaderData();
+    const [allProduct, setAllProduct] = useState(null);
     console.log(products);
     // const { name } = products;
     return (
@@ -14,11 +15,17 @@ const Products = () => {
                     products.map(product => <Product
                         key={product._id}
                         product={product}
+                        setAllProduct={setAllProduct}
                     ></Product>)
                 }
 
             </div>
-            <BookModal></BookModal>
+            {
+                allProduct &&
+                <BookModal
+                    allProduct={allProduct}
+                ></BookModal>
+            }
         </div>
     );
 };
