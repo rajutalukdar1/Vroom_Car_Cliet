@@ -33,6 +33,7 @@ const MyProducts = () => {
                             <th>Email</th>
                             <th>Price</th>
                             <th>Phone</th>
+                            <th>Meeting Location</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +45,7 @@ const MyProducts = () => {
                                 <td>{booking.email}</td>
                                 <td>{booking.price}</td>
                                 <td>{booking.phone}</td>
+                                <td>{booking.meeting}</td>
                             </tr>)
                         }
                     </tbody>

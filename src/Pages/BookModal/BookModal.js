@@ -16,6 +16,7 @@ const BookModal = ({ allProduct, setAllProduct }) => {
         const email = form.email.value;
         const price = form.price.value;
         const phone = form.phone.value;
+        const meeting = form.meeting.value;
 
 
         // console.log('click');
@@ -25,6 +26,7 @@ const BookModal = ({ allProduct, setAllProduct }) => {
             email,
             price,
             phone,
+            meeting
         }
         // console.log(booking);
         fetch('http://localhost:5000/bookings', {
@@ -56,9 +58,9 @@ const BookModal = ({ allProduct, setAllProduct }) => {
                     <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-lg font-bold">{name}</h3>
                     <form onSubmit={handleBooking} className='grid grid-cols-1 mt-10'>
-                        <label className="label">
+                        {/* <label className="label">
                             <span className="label-text text-black">Car Name :</span>
-                        </label>
+                        </label> */}
                         <input name='product_name' type="text" value={name} disabled className="input input-bordered input-warning w-full font-semibold" />
                         <label className="label">
                             <span className="label-text text-black">User Name :</span>
@@ -76,6 +78,10 @@ const BookModal = ({ allProduct, setAllProduct }) => {
                             <span className="label-text text-black">User Number :</span>
                         </label>
                         <input name='phone' type="Number" placeholder='Mobile' className="input input-bordered input-warning w-full" required />
+                        <label className="label">
+                            <span className="label-text text-black">Meeting Location</span>
+                        </label>
+                        <input name='meeting' type="text" placeholder='Meeting Location' className="input input-bordered input-warning w-full" required />
 
                         <br />
                         <input className="btn btn-gry w-full text-white hover:bg-warning" type="submit" value="Submit" />

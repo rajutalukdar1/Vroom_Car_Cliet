@@ -4,7 +4,6 @@ import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import useToken from '../../hooks/useToken';
-import Loading from '../Shared/Loading/Loading';
 import './Login.css'
 
 const Login = () => {
@@ -17,7 +16,6 @@ const Login = () => {
     const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/';
-
 
 
     if (token) {
