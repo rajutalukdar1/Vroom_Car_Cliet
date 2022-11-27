@@ -18,7 +18,7 @@ const Navbar = () => {
         <li><Link>About</Link></li>
         {user?.uid ?
             <>
-                <li><Link to='/login'>My Products</Link></li>
+                <li><Link to='/dashboard'>My WishList</Link></li>
                 <li><Link to='/dashboard'>Dashboard</Link></li>
                 <li><Link onClick={handleLogOut}>Log Out</Link></li>
             </>
