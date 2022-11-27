@@ -33,7 +33,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/productAll',
-                element: <AllCars></AllCars>
+                element: <PrivetRoute><AllCars></AllCars></PrivetRoute>
             },
             {
                 path: '/products/:car_id',

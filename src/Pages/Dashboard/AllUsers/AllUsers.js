@@ -45,6 +45,24 @@ const AllUsers = () => {
             })
     }
 
+    const handleDeleteUser = id => {
+        // console.log(id);
+        fetch(`http://localhost:5000/users/${id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success('Users Deleted successfully')
+                }
+            })
+    }
+
     return (
         <div>
             <h2 className="text-2xl font-bold">All users</h2>
@@ -73,7 +91,7 @@ const AllUsers = () => {
                                 <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className="btn btn-xs btn-primary">Make Admin</button>}</td>
                                 <td>{user?.role !== 'seller' && <button onClick={() => handleMakeSeller(user._id)} className="btn btn-xs btn-warning">Make a Seller</button>}</td>
                                 <td><button className="btn btn-xs btn-success">verify </button></td>
-                                <td><button className="btn btn-xs">Delete</button></td>
+                                <td><button onClick={() => handleDeleteUser(user._id)} className="btn btn-xs">Delete</button></td>
                             </tr>)
                         }
 

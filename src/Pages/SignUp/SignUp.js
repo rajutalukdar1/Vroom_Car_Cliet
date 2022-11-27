@@ -35,7 +35,7 @@ const SignUp = () => {
                 // console.log(userInfo);
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email);
+                        saveUser(data.name, data.email, data.role);
                     })
                     .catch(err => console.log(err))
             })
@@ -51,6 +51,10 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                // const googleUser ={
+                //     name:user.displayName,
+                //     email:user.email
+                // }
                 if (user.uid) {
                     toast.success('Login successfully', {
                         position: "top-center"
@@ -63,8 +67,8 @@ const SignUp = () => {
     }
 
 
-    const saveUser = (name, email) => {
-        const user = { name, email };
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
