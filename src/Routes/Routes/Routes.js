@@ -4,11 +4,17 @@ import Main from "../../Layout/Main";
 import AllCars from "../../Pages/AllCars/AllCars";
 import Blog from "../../Pages/Blog/Blog";
 import AddProducts from "../../Pages/Dashboard/AddProducts/AddProducts";
+import AllSeller from "../../Pages/Dashboard/AllUsers/Admin/AllSeller";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
+import MyBuyers from "../../Pages/Dashboard/AllUsers/Seller/MyBuyers";
+import SellingProducts from "../../Pages/Dashboard/AllUsers/Seller/SellingProducts";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
+import Payment from "../../Pages/Dashboard/Payment/Payment";
+import ErrorPage from "../../Pages/ErrorPages/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Products from "../../Pages/Products/Products";
+import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 import SignUp from "../../Pages/SignUp/SignUp";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
@@ -18,6 +24,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/',
@@ -38,7 +45,7 @@ const router = createBrowserRouter([
             {
                 path: '/products/:car_id',
                 loader: ({ params }) => fetch(`http://localhost:5000/products/${params.car_id}`),
-                element: <Products></Products>
+                element: <PrivetRoute><Products></Products></PrivetRoute>
             },
             {
                 path: '/login',
@@ -53,6 +60,7 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/dashboard',
@@ -63,10 +71,33 @@ const router = createBrowserRouter([
                 element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
             {
+                path: '/dashboard/allsellers',
+                element: <AdminRoute><AllSeller></AllSeller></AdminRoute>
+            },
+            {
+                path: '/dashboard/allbuyers',
+                element: <AdminRoute><MyBuyers></MyBuyers></AdminRoute>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <AdminRoute><Payment></Payment></AdminRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
+            },
+            {
                 path: '/dashboard/addproduct',
                 element: <SellerRoute><AddProducts></AddProducts></SellerRoute>
             },
+            {
+                path: '/dashboard/sellingproducts',
+                element: <SellerRoute><SellingProducts></SellingProducts></SellerRoute>
+            },
+
+
         ]
+    },
+    {
+        path: '*',
+        element: <ErrorPage></ErrorPage>
     }
 ])
 

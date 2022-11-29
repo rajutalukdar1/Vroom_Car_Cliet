@@ -21,17 +21,26 @@ const DashboardLayout = () => {
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
                         {/* <!-- Sidebar content here --> */}
-                        <li><Link to='/dashboard'>My Products</Link></li>
+                        <li><Link to='/dashboard' className='font-semibold bg-[#6ac3ba] w-1/2 hover:bg-yellow-400'>My Orders</Link></li>
+                        {!isAdmin && !isSeller &&
+                            <>
+                                <li><Link to='/dashboard' className='font-semibold bg-[#6ac3ba] w-1/2 hover:bg-yellow-400'>My Wish List</Link></li>
+                            </>
+                        }
                         {
-                            isAdmin && <>
-                                <li><Link to='/dashboard/allusers'>All Users</Link></li>
-                                <li><Link to='/seller'>Sellers</Link></li>
+                            isAdmin && !isSeller && <>
+                                {/* <li><Link to='/dashboard/allusers' className='font-semibold bg-[#6ac3ba] w-1/2 hover:bg-yellow-400'>All Buyers</Link></li> */}
+                                <li><Link to='/dashboard/allsellers' className='font-semibold bg-[#6ac3ba] w-1/2 hover:bg-yellow-400'>All Sellers</Link></li>
+                                <li><Link to='/dashboard/allbuyers' className='font-semibold bg-[#6ac3ba] w-1/2 hover:bg-yellow-400'>All Buyers</Link></li>
+                                {/* <li><Link to='/dashboard/sellingproducts' className='font-semibold bg-[#6ac3ba] w-1/2 hover:bg-yellow-400'>My Products</Link></li>
+                                <li><Link to='/dashboard/addproduct' className='font-semibold bg-[#6ac3ba] w-1/2 hover:bg-yellow-400'>Add Product</Link></li> */}
                             </>
                         }
                         {
                             isSeller && <>
-                                <li><Link>Product</Link></li>
-                                <li><Link to='/dashboard/addproduct'>Add Product</Link></li>
+                                <li><Link to='/dashboard/addproduct' className='font-semibold bg-[#6ac3ba] w-1/2 hover:bg-yellow-400'>Add Product</Link></li>
+                                <li><Link to='/dashboard/sellingproducts' className='font-semibold bg-[#6ac3ba] w-1/2 hover:bg-yellow-400'>My Products</Link></li>
+                                {/* <li><Link to='/dashboard/mybuyers' className='font-semibold bg-[#6ac3ba] w-1/2 hover:bg-yellow-400'>My Buyers</Link></li> */}
                             </>
                         }
                     </ul>

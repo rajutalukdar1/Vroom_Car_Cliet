@@ -13,7 +13,7 @@ const AddProducts = () => {
         // console.log(image);
         const formData = new FormData();
         formData.append('image', image);
-        const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imgbbHostKey}`
+        const url = `https://api.imgbb.com/1/upload?key=${imgbbHostKey}`
         fetch(url, {
             method: 'POST',
             body: formData
@@ -34,7 +34,7 @@ const AddProducts = () => {
                         years_of_use: data.years_of_use,
                         image: imgData.data.url
                     }
-                    console.log(addProducts);
+                    // console.log(addProducts);
 
                     fetch('http://localhost:5000/products', {
                         method: 'POST',
@@ -83,14 +83,30 @@ const AddProducts = () => {
                                 placeholder="Product Image" className="input input-bordered " />
                             {errors.productImage && <p role="alert" className='text-red-500'>{errors.productImage?.message}</p>}
                         </div>
-                        <div className="form-control">
+                        {/* <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-black">Brand Name :</span>
                             </label>
                             <input type="text" {...register("brandName", {
                                 required: "Brand Name is must  is required"
                             })}
-                                placeholder="Brand Name" className="input input-bordered capitalize" />
+                                placeholder="Brand Name" className="input input-bordered " />
+                            {errors.brandName && <p role="alert" className='text-red-500'>{errors.brandName?.message}</p>}
+                        </div> */}
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text text-black">Brand Name:</span>
+                            </label>
+                            <select type="text" {...register("brandName", {
+                                required: "Brand Name is must  is required"
+                            })}
+                                placeholder="Brand Name" className="select select-warning w-full" >
+                                <option>Audi</option>
+                                <option>BMW</option>
+                                <option>Mercedes</option>
+                                <option>Suzuki</option>
+                            </select>
                             {errors.brandName && <p role="alert" className='text-red-500'>{errors.brandName?.message}</p>}
                         </div>
 

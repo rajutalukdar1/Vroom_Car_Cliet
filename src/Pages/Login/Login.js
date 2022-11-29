@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import useToken from '../../hooks/useToken';
 import './Login.css'
@@ -13,14 +13,15 @@ const Login = () => {
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const [token] = useToken(loginUserEmail);
     const location = useLocation();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/';
 
+    // console.log({ token });
+    // if (token) {
 
-    if (token) {
-        navigate(from, { replace: true });
-    }
+    //     navigate(from, { replace: true });
+    // }
 
 
     const handelLogin = data => {
@@ -58,8 +59,13 @@ const Login = () => {
     // if (!token) {
     //     return <Loading></Loading>
     // }
+
     return (
+
         <div>
+            {
+                token && <Navigate to={from} state={{ from: location }} replace></Navigate>
+            }
             <div className="hero min-h-screen text-black">
                 <div className="hero-content flex-col">
                     <div className="text-center lg:text-left">

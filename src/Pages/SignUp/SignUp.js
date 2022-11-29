@@ -127,8 +127,8 @@ const SignUp = () => {
                                     required: "selection is required"
                                 })}
                                     placeholder="role" className="select select-warning w-full max-w-xs" >
-                                    <option selected>Buyer</option>
-                                    <option>Seller</option>
+                                    <option>buyer</option>
+                                    <option>seller</option>
                                 </select>
                                 {errors.role && <p role="alert" className='text-red-500'>{errors.role?.message}</p>}
                             </div>

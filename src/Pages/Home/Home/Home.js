@@ -1,5 +1,6 @@
 import React from 'react';
 import Categories from '../../Categories/Categories';
+import ActionsOffers from '../ActionsOffers';
 import Banner from '../Banner/Banner';
 import BrandLogo from '../BrandLogo/BrandLogo';
 import InfoCard from '../InfoCard/InfoCard';
@@ -15,6 +16,7 @@ const Home = () => {
             <h2>this is card</h2>
             <Categories></Categories>
             <InfoCard></InfoCard>
+            <ActionsOffers></ActionsOffers>
         </div>
     );
 };
