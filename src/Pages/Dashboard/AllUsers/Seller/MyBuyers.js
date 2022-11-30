@@ -5,13 +5,13 @@ import toast from 'react-hot-toast';
 const MyBuyers = () => {
     const { data: allBuyers = [], refetch } = useQuery({
         queryKey: ['users'],
-        queryFn: () => fetch(`http://localhost:5000/users?role=buyer`)
+        queryFn: () => fetch(`https://vroom-car-ass-12.vercel.app/users?role=buyer`)
             .then(res => res.json())
     })
 
     const handleDeleteUser = id => {
         // console.log(id);
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://vroom-car-ass-12.vercel.app/users/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

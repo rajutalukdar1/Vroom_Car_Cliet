@@ -1,4 +1,4 @@
-import { data } from 'autoprefixer';
+
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../../../Contexts/AuthProvider';
@@ -10,7 +10,7 @@ const AdvertiseProducts = () => {
     const [advertise, setAdvertise] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/advertise`)
+        axios.get(`https://vroom-car-ass-12.vercel.app/advertise`)
             .then(data => {
                 console.log(data);
                 setAdvertise(data.data);

@@ -10,7 +10,7 @@ const SellingProducts = () => {
     const [myProducts, setMyProducts] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/products/:name/myProducts`)
+        axios.get(`https://vroom-car-ass-12.vercel.app/products/:name/myProducts`)
             .then(data => {
                 // console.log('seller product data', data);
                 setMyProducts(data.data);
@@ -23,7 +23,7 @@ const SellingProducts = () => {
 
     const handleAdvertise = (product) => {
         // console.log(product);
-        fetch('http://localhost:5000/advertise', {
+        fetch('https://vroom-car-ass-12.vercel.app/advertise', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

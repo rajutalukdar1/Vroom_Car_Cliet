@@ -36,7 +36,7 @@ const AddProducts = () => {
                     }
                     // console.log(addProducts);
 
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://vroom-car-ass-12.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

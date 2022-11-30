@@ -44,7 +44,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/products/:car_id',
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.car_id}`),
+                loader: ({ params }) => fetch(`https://vroom-car-ass-12.vercel.app/products/${params.car_id}`),
                 element: <PrivetRoute><Products></Products></PrivetRoute>
             },
             {
@@ -80,8 +80,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/payment/:id',
-                element: <AdminRoute><Payment></Payment></AdminRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`https://vroom-car-ass-12.vercel.app/bookings/${params.id}`)
             },
             {
                 path: '/dashboard/addproduct',

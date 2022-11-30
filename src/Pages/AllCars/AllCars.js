@@ -4,7 +4,7 @@ import AllCar from './AllCar';
 const AllCars = () => {
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://vroom-car-ass-12.vercel.app/products')
             .then(res => res.json())
             .then(data => setCategories(data))
     }, [])
