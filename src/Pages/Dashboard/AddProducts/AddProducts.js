@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const AddProducts = () => {
+    const { user } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const imgbbHostKey = process.env.REACT_APP_imgbb_key;
     // console.log(imgbbHostKey);
@@ -32,11 +34,14 @@ const AddProducts = () => {
                         resale_Price: data.resale_Price,
                         original_Price: data.original_Price,
                         years_of_use: data.years_of_use,
-                        image: imgData.data.url
+                        image: imgData.data.url,
+                        email: `${user.email}`
+
                     }
+                    // console.log(addProducts.email);
                     // console.log(addProducts);
 
-                    fetch('https://vroom-car-ass-12.vercel.app/products', {
+                    fetch('http://localhost:5000/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

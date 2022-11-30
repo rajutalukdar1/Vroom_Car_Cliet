@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -6,16 +7,28 @@ import Loading from '../../../Shared/Loading/Loading';
 
 const SellingProducts = () => {
 
-    const { loading } = useContext(AuthContext);
-    const [myProducts, setMyProducts] = useState([]);
+    const { loading, user } = useContext(AuthContext);
+    // const [myProducts, setMyProducts] = useState([]);
 
-    useEffect(() => {
-        axios.get(`https://vroom-car-ass-12.vercel.app/products/:name/myProducts`)
-            .then(data => {
-                // console.log('seller product data', data);
-                setMyProducts(data.data);
-            })
-    }, []);
+    // useEffect(() => {
+    //     axios.get(`https://vroom-car-ass-12.vercel.app/products/myProducts?email=${user?.email}`)
+    //         .then(data => {
+    //             console.log('seller product data', data);
+    //             setMyProducts(data.data);
+    //         })
+    // }, []);
+
+    const url = `https://vroom-car-ass-12.vercel.app/products/myProducts?email=${user?.email}`;
+    // console.log(url);
+    const { data: products = [] } = useQuery({
+        queryKey: ['products'],
+        queryFn: async () => {
+            const res = await fetch(url)
+            const data = await res.json();
+            // console.log(data);
+            return data;
+        }
+    })
 
     if (loading) {
         return <Loading></Loading>
@@ -46,7 +59,7 @@ const SellingProducts = () => {
 
     return (
         <div>
-            <h2 className='text-3xl font-bold'>Seller Products : {myProducts.length}</h2>
+            <h2 className='text-3xl font-bold'>Seller Products : {products.length}</h2>
 
             <div className="overflow-x-auto">
                 <table className="table w-full">
@@ -63,7 +76,7 @@ const SellingProducts = () => {
                     <tbody>
 
                         {
-                            myProducts.map((product, i) => <tr key={product._id}>
+                            products.map((product, i) => <tr key={product._id}>
                                 <th>{i + 1}</th>
                                 <td><img className=' w-24 rounded-xl' src={product.image} alt="" /></td>
                                 <td>{product.name}</td>
