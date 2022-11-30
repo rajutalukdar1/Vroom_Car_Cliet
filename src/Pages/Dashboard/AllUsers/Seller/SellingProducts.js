@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
 import Loading from '../../../Shared/Loading/Loading';
@@ -18,7 +17,7 @@ const SellingProducts = () => {
     //         })
     // }, []);
 
-    const url = `https://vroom-car-ass-12.vercel.app/products/myProducts?email=${user?.email}`;
+    const url = `http://localhost:5000/productsMy?email=${user?.email}`;
     // console.log(url);
     const { data: products = [] } = useQuery({
         queryKey: ['products'],
