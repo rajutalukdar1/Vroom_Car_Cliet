@@ -12,7 +12,6 @@ const AdvertiseProducts = () => {
     useEffect(() => {
         axios.get(`https://vroom-car-ass-12.vercel.app/advertise`)
             .then(data => {
-                // console.log(data);
                 setAdvertise(data.data);
             })
     }, []);

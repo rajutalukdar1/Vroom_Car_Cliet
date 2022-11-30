@@ -46,7 +46,7 @@ const AllUsers = () => {
     }
 
     const handleDeleteUser = id => {
-        // console.log(id);
+
         fetch(`https://vroom-car-ass-12.vercel.app/users/${id}`, {
             method: 'DELETE',
             headers: {
@@ -55,7 +55,7 @@ const AllUsers = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
+
                 if (data.deletedCount > 0) {
                     refetch();
                     toast.success('Users Deleted successfully')
