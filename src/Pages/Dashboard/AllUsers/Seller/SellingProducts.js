@@ -17,9 +17,9 @@ const SellingProducts = () => {
     //         })
     // }, []);
 
-    const url = `http://localhost:5000/productsMy?email=${user?.email}`;
+    const url = `https://vroom-car-ass-12.vercel.app/productsMy?email=${user?.email}`;
     // console.log(url);
-    const { data: products = [] } = useQuery({
+    const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
             const res = await fetch(url)
@@ -55,6 +55,23 @@ const SellingProducts = () => {
             })
     }
 
+    const handleDeleteUser = product => {
+        // console.log(id);
+        fetch(`https://vroom-car-ass-12.vercel.app/productsMy/${product._id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success('My Product Deleted successfully')
+                }
+            })
+    }
 
     return (
         <div>
@@ -70,6 +87,7 @@ const SellingProducts = () => {
                             <th>Product Name</th>
                             <th>Price</th>
                             <th>Advertise</th>
+                            <th>DELETE</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -81,7 +99,7 @@ const SellingProducts = () => {
                                 <td>{product.name}</td>
                                 <td>{product.price}</td>
                                 <td><button onClick={() => handleAdvertise(product)} className='btn btn-xs btn-warning hover:bg-green-400'>Advertise</button></td>
-
+                                <td><button onClick={() => handleDeleteUser(product)} className="btn btn-xs">Delete</button></td>
                             </tr>)
                         }
 
