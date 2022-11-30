@@ -2,14 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Category = ({ category }) => {
-    // console.log(category.car_id);
+
     const { image, brandName, sellerName, location, car_id } = category;
 
 
-    // const handleAllCars = () => {
-    //     console.log('view all cars');
-    //     onClick={handleAllCars}
-    // }
 
 
     return (

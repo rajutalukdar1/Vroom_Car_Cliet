@@ -9,7 +9,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_pK);
 
 const Payment = () => {
     const booking = useLoaderData();
-    // console.log(booking);
+
     return (
         <div>
             <h2 className='text-2xl font-bold'>Payment for : <span className='font-extrabold text-sky-500'>{booking.product_name}</span></h2>

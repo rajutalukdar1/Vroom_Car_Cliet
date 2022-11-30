@@ -15,7 +15,6 @@ const Home = () => {
                 <div className="divider text-black text-3xl">TOP BRANDS</div>
             </div>
             <BrandLogo></BrandLogo>
-            <h2>this is card</h2>
             <Categories></Categories>
             <InfoCard></InfoCard>
             <ActionsOffers></ActionsOffers>

@@ -17,12 +17,6 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || '/';
 
-    // console.log({ token });
-    // if (token) {
-
-    //     navigate(from, { replace: true });
-    // }
-
 
     const handelLogin = data => {
         console.log(data);

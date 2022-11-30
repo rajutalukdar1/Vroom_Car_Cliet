@@ -19,7 +19,7 @@ const AllCar = ({ allCar }) => {
                             <h1 className='text-green-500 font-semibold'>|Now Price:{resale_Price}|</h1>
                         </div>
                         <div className="card-actions flex justify-between">
-                            <button className="btn btn-success text-white hover:bg-orange-600">View Cars</button>
+                            <button className="btn btn-success text-white hover:bg-orange-600">Buy Cars</button>
                             <button className="btn btn-error text-white hover:bg-yellow-600">Book Mark</button>
                         </div>
                     </div>

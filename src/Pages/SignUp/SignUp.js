@@ -50,7 +50,7 @@ const SignUp = () => {
         signInWithGoogle()
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 // const googleUser ={
                 //     name:user.displayName,
                 //     email:user.email
@@ -78,16 +78,13 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setCreatedUserEmail(email);
                 // getUserToken(email)
             })
     }
 
 
-    // const getUserToken = email => {
-    //     navigate('/');
-    // }
+
 
     return (
         <div>

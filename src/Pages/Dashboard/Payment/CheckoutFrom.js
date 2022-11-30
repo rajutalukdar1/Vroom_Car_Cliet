@@ -47,7 +47,7 @@ const CheckoutFrom = ({ booking }) => {
             SetCardError(error.message)
         } else {
             SetCardError('')
-            // console.log('[PaymentMethod]', paymentMethod);
+
         }
         setSuccess('');
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(

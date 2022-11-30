@@ -9,7 +9,6 @@ const useSeller = email => {
             fetch(`https://vroom-car-ass-12.vercel.app/users/seller/${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    // console.log(data);
                     setIsSeller(data.isSeller);
                     setIsSellerLoading(false);
                 })

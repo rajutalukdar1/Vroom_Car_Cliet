@@ -7,12 +7,11 @@ const AddProducts = () => {
     const { user } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const imgbbHostKey = process.env.REACT_APP_imgbb_key;
-    // console.log(imgbbHostKey);
+
 
     const handleAddProduct = data => {
-        // console.log(data.productImage[0]);
+
         const image = data.productImage[0];
-        // console.log(image);
         const formData = new FormData();
         formData.append('image', image);
         const url = `https://api.imgbb.com/1/upload?key=${imgbbHostKey}`
@@ -50,7 +49,7 @@ const AddProducts = () => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log(data);
+                            // console.log(data);
                             toast.success('products added success')
                             reset();
                         })

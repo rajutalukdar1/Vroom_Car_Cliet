@@ -7,24 +7,14 @@ import Loading from '../../../Shared/Loading/Loading';
 const SellingProducts = () => {
 
     const { loading, user } = useContext(AuthContext);
-    // const [myProducts, setMyProducts] = useState([]);
 
-    // useEffect(() => {
-    //     axios.get(`https://vroom-car-ass-12.vercel.app/products/myProducts?email=${user?.email}`)
-    //         .then(data => {
-    //             console.log('seller product data', data);
-    //             setMyProducts(data.data);
-    //         })
-    // }, []);
 
     const url = `https://vroom-car-ass-12.vercel.app/productsMy?email=${user?.email}`;
-    // console.log(url);
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
             const res = await fetch(url)
             const data = await res.json();
-            // console.log(data);
             return data;
         }
     })
@@ -34,7 +24,6 @@ const SellingProducts = () => {
     }
 
     const handleAdvertise = (product) => {
-        // console.log(product);
         fetch('https://vroom-car-ass-12.vercel.app/advertise', {
             method: 'POST',
             headers: {
@@ -44,7 +33,6 @@ const SellingProducts = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // console.log('data', data);
                 if (data.acknowledged) {
                     <Loading></Loading>
                     toast.success('Booking successfully')
@@ -56,7 +44,7 @@ const SellingProducts = () => {
     }
 
     const handleDeleteUser = product => {
-        // console.log(id);
+
         fetch(`https://vroom-car-ass-12.vercel.app/productsMy/${product._id}`, {
             method: 'DELETE',
             headers: {
@@ -65,7 +53,6 @@ const SellingProducts = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
                 if (data.deletedCount > 0) {
                     refetch();
                     toast.success('My Product Deleted successfully')

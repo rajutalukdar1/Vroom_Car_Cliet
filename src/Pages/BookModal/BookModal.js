@@ -6,7 +6,7 @@ import Loading from '../Shared/Loading/Loading';
 const BookModal = ({ allProduct, setAllProduct }) => {
     const { user } = useContext(AuthContext);
     const { name, resale_Price, image } = allProduct;
-    console.log(allProduct);
+
 
 
     const handleBooking = (event) => {
@@ -20,7 +20,6 @@ const BookModal = ({ allProduct, setAllProduct }) => {
         const meeting = form.meeting.value;
 
 
-        // console.log('click');
         const booking = {
             product_name,
             name,
@@ -31,7 +30,7 @@ const BookModal = ({ allProduct, setAllProduct }) => {
             image
 
         }
-        // console.log(booking);
+
         fetch('https://vroom-car-ass-12.vercel.app/bookings', {
             method: 'POST',
             headers: {
@@ -41,7 +40,6 @@ const BookModal = ({ allProduct, setAllProduct }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.acknowledged) {
                     <Loading></Loading>
                     setAllProduct(null);
