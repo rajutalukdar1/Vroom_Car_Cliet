@@ -1,12 +1,15 @@
-## Live Side Link ...
-### https://assignment-no-12-57281.web.app/
-
-## Live Cord Link ...
+ 
+ ## 1. Client-side code GitHub repository:
 ### https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-rajutalukdar1
 
-## Server Cord Link ...
-### https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-rajutalukdar1
+## 2. Server-side code GitHub repository: 
+## https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-rajutalukdar1
 
+### 3. Live website link: 
+## https://assignment-no-12-57281.web.app/
+
+4.  * adminEmail: tom@gmail.com
+    * adminPassword: 123456
 
 
 
@@ -21,6 +24,3 @@
 * get data by backend and show all data for frontend .add post data font and and update data and delete data also backend mongoDB .
 
 
-
-### admin: tom@gmail.com
-### password: 123456
