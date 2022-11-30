@@ -70,7 +70,7 @@ const AddProducts = () => {
                             <input type="text" {...register("productName", {
                                 required: "Product Name is required"
                             })}
-                                placeholder="Product Name" className="input input-bordered " />
+                                placeholder="Product Name" className="input select-warning input-bordered " />
                             {errors.productName && <p role="alert" className='text-red-500'>{errors.productName?.message}</p>}
                         </div>
                         <div className="form-control">
@@ -80,7 +80,7 @@ const AddProducts = () => {
                             <input type="file" {...register("productImage", {
                                 required: "Product Image is required"
                             })}
-                                placeholder="Product Image" className="input input-bordered " />
+                                placeholder="Product Image" className="file-input file-input-bordered file-input-warning w-full " />
                             {errors.productImage && <p role="alert" className='text-red-500'>{errors.productImage?.message}</p>}
                         </div>
                         {/* <div className="form-control">
@@ -117,7 +117,7 @@ const AddProducts = () => {
                             <input type="text" {...register("sellerName", {
                                 required: "Seller Name is required"
                             })}
-                                placeholder="Seller Name" className="input input-bordered capitalize" />
+                                placeholder="Seller Name" className="input select-warning input-bordered capitalize" />
                             {errors.sellerName && <p role="alert" className='text-red-500'>{errors.sellerName?.message}</p>}
                         </div>
                         <div className="form-control">
@@ -127,7 +127,7 @@ const AddProducts = () => {
                             <input type="text" {...register("location", {
                                 required: "Location is required"
                             })}
-                                placeholder="Location" className="input input-bordered capitalize" />
+                                placeholder="Location" className="input select-warning input-bordered capitalize" />
                             {errors.location && <p role="alert" className='text-red-500'>{errors.location?.message}</p>}
                         </div>
                         <div className="form-control">
@@ -137,7 +137,7 @@ const AddProducts = () => {
                             <input type="text" {...register("years_of_use", {
                                 required: "Years Of Use is required"
                             })}
-                                placeholder="Years Of Use" className="input input-bordered " />
+                                placeholder="Years Of Use" className="input select-warning input-bordered " />
                             {errors.years_of_use && <p role="alert" className='text-red-500'>{errors.years_of_use?.message}</p>}
                         </div>
                         <div className="form-control">
@@ -147,7 +147,7 @@ const AddProducts = () => {
                             <input type="text" {...register("original_Price", {
                                 required: "original_Price is required"
                             })}
-                                placeholder="Original Price" className="input input-bordered " />
+                                placeholder="Original Price" className="input select-warning input-bordered " />
                             {errors.original_Price && <p role="alert" className='text-red-500'>{errors.original_Price?.message}</p>}
                         </div>
                         <div className="form-control">
@@ -157,7 +157,7 @@ const AddProducts = () => {
                             <input type="text" {...register("resale_Price", {
                                 required: "Resale Price is required"
                             })}
-                                placeholder="Resale Price" className="input input-bordered " />
+                                placeholder="Resale Price" className="input select-warning input-bordered " />
                             {errors.resale_Price && <p role="alert" className='text-red-500'>{errors.resale_Price?.message}</p>}
                         </div>
                     </div>

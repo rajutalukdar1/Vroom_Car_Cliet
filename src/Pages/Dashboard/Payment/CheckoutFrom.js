@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const CheckoutFrom = ({ booking }) => {
     const [cardError, SetCardError] = useState('');
@@ -8,7 +9,7 @@ const CheckoutFrom = ({ booking }) => {
     const [transactionId, setTransactionId] = useState("");
     const stripe = useStripe();
     const elements = useElements();
-    const { price, name, email } = booking;
+    const { price, name, email, _id } = booking;
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
@@ -36,7 +37,7 @@ const CheckoutFrom = ({ booking }) => {
             return;
         }
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card,
         });
@@ -67,8 +68,32 @@ const CheckoutFrom = ({ booking }) => {
             return;
         }
         if (paymentIntent.status === "succeeded") {
-            setSuccess('congrats ! your payment successfully')
-            setTransactionId(paymentIntent.id)
+
+            console.log('card info', card);
+
+            const payment = {
+                price,
+                transactionId: paymentIntent.id,
+                email,
+                bookingId: _id
+            }
+            fetch('http://localhost:5000/payments', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(payment)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.insertedId) {
+                        setSuccess('congrats ! your payment successfully')
+                        toast.success('congrats ! your payment successfully')
+                        setTransactionId(paymentIntent.id);
+                    }
+                })
         }
         console.log('paymentIntent', paymentIntent);
     }
@@ -92,7 +117,7 @@ const CheckoutFrom = ({ booking }) => {
                         },
                     }}
                 />
-                <button className='btn btn-xs btn-warning mt-5 hover:bg-yellow-600' type="submit" disabled={!stripe || !clientSecret}>
+                <button className='btn btn-sm btn-warning mt-5 hover:bg-yellow-600' type="submit" disabled={!stripe || !clientSecret}>
                     Pay
                 </button>
             </form>

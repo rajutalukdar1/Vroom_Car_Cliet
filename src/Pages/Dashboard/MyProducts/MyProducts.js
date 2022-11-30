@@ -29,9 +29,9 @@ const MyProducts = () => {
                     <thead>
                         <tr>
                             <th></th>
+                            <th>Avatar</th>
                             <th>Name</th>
                             <th>Product Name</th>
-                            <th>Email</th>
                             <th>Price</th>
                             <th>Phone</th>
                             <th>Meeting Location</th>
@@ -42,9 +42,9 @@ const MyProducts = () => {
                         {
                             bookings?.map((booking, i) => <tr key={booking._id}>
                                 <th>{i + 1}</th>
+                                <th><img className=' w-24 rounded-xl' src={booking.image} alt="" /></th>
                                 <td>{booking.name}</td>
                                 <td>{booking.product_name}</td>
-                                <td>{booking.email}</td>
                                 <td>{booking.price}</td>
                                 <td>{booking.phone}</td>
                                 <td>{booking.meeting}</td>

@@ -5,7 +5,8 @@ import Loading from '../Shared/Loading/Loading';
 
 const BookModal = ({ allProduct, setAllProduct }) => {
     const { user } = useContext(AuthContext);
-    const { name, resale_Price } = allProduct;
+    const { name, resale_Price, image } = allProduct;
+    console.log(allProduct);
 
 
     const handleBooking = (event) => {
@@ -26,7 +27,9 @@ const BookModal = ({ allProduct, setAllProduct }) => {
             email,
             price,
             phone,
-            meeting
+            meeting,
+            image
+
         }
         // console.log(booking);
         fetch('http://localhost:5000/bookings', {
